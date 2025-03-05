@@ -1,0 +1,3 @@
+Libraries used:
+- pandas
+- openpyxl
