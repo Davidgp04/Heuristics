@@ -1,47 +1,46 @@
-# Heuristics - PTL System Balancing
+# Heurísticas - Balanceo de Sistemas PTL
 
-## Installation and Setup
+## Instalación y Configuración
 
-Follow these steps to set up and run the project:
+Sigue estos pasos para configurar y ejecutar el proyecto:
 
-### 1. Clone the Repository
+### 1. Clonar el Repositorio
 ```sh
 git clone https://github.com/Davidgp04/Heuristics.git
 cd Heuristics
 ```
 
-### 2. Move to the `src` Folder
+### 2. Moverse a la Carpeta `src`
 ```sh
 cd src
 ```
 
-### 3. Install Dependencies
-Ensure you have Python installed, then run:
+### 3. Instalar Dependencias
+Asegúrate de tener Python instalado y ejecuta:
 ```sh
 pip install -r requirements.txt
 ```
 
-## Running the Code
+## Ejecución del Código
 
-### Deterministic Constructive Method
-To run the constructive heuristic method, use:
+### Método Constructivo Determinista
+Para ejecutar la heurística constructiva, usa:
 ```sh
-py main.py nombre_archivo.xlsx nombre_salida.xlsx [opcional]
+py main.py pedidos.xlsx resultado.xlsx [opcional]
 ```
 
-### Randomized Variant
-To run the randomized variant, use:
+### Variante Aleatorizada
+Para ejecutar la variante aleatorizada, usa:
 ```sh
-py randomized.py nombre_archivo.xlsx nombre_salida.xlsx [opcional]
+py randomized.py pedidos.xlsx resultado.xlsx [opcional]
 ```
 
-### Parameters:
-- `nombre_archivo.xlsx` → Input Excel file containing order data.
-- `nombre_salida.xlsx` → Output Excel file where results will be saved.
-- `[opcional]` → Any additional optional parameters (if applicable).
+### Parámetros:
+- `pedidos.xlsx` → Archivo Excel de entrada con los datos de los pedidos.
+- `resultado.xlsx` → Archivo Excel de salida donde se guardarán los resultados.
+- `[opcional]` → Parámetro opcional (si aplica).
 
-## Notes
-- Ensure that the input file follows the required format.
-- The output file will contain the processed order assignments.
-- If you encounter any issues, check that all dependencies are installed correctly.
-�
+## Notas
+- Asegúrate de que el archivo de entrada tenga el formato correcto.
+- El archivo de salida contendrá la asignación procesada de los pedidos.
+- Si tienes problemas, revisa que todas las dependencias estén instaladas correctamente.
