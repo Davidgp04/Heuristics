@@ -36,11 +36,13 @@ py randomized.py pedidos.xlsx resultado.xlsx [opcional]
 ```
 
 ### Parámetros:
-- `pedidos.xlsx` → Archivo Excel de entrada con los datos de los pedidos.
-- `resultado.xlsx` → Archivo Excel de salida donde se guardarán los resultados.
+- `pedidos.xlsx` → Archivo Excel de entrada con los datos de los pedidos (ubicado en la carpeta data).
+- `resultado.xlsx` → Archivo Excel de salida donde se guardarán los resultados (ubicado en la carpeta output).
 - `[opcional]` → Parámetro opcional (si aplica).
 
 ## Notas
+- Los resultados se guardan en la ruta output
+- Los archivos de entrada deben estar en la carpeta data.
 - Asegúrate de que el archivo de entrada tenga el formato correcto.
 - El archivo de salida contendrá la asignación procesada de los pedidos.
 - Si tienes problemas, revisa que todas las dependencias estén instaladas correctamente.
