@@ -12,7 +12,8 @@ def print_dict(d, decimals=0):
             
 
 def write_excel(solutions, zones, archive_name, input_filename):
-    solutions_df=pd.DataFrame(list(solutions.items()),columns=['Position','Order'])
+    inverted_solutions = [(order, position) for position, order in solutions.items()]
+    solutions_df = pd.DataFrame(inverted_solutions, columns=['Pedido', 'Salida'])
     zones_df=pd.DataFrame(list(zones.items()),columns=['Zona','Tiempo'])
     max_zone=zones_df[zones_df['Tiempo']==zones_df['Tiempo'].max()]
     data_sheet1={
@@ -81,8 +82,8 @@ if __name__ == "__main__":
     ZN = Parametros ['zn']
 
 
-    v=float(V)
-    zn=float(ZN)
+    v = float(V.iloc[0])  # Explicitly get first element
+    zn = float(ZN.iloc[0])
     
     
     #Sort the exits by the time it takes to reach them
@@ -130,5 +131,5 @@ if __name__ == "__main__":
     
     #Write the results within an excel file
     write_excel(dict_positions_order, dict_zones, output_file, input_file)
-    print(dict_zones)
-    print('Success')
+    # print(dict_zones)
+    print(f'Success Constructive, {input_file}, {max(dict_zones.values())}')

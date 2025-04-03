@@ -52,8 +52,7 @@ def calculate_zones_time(orders, time_positions, order_sku_time, s):
     return dict_zones, dict_positions_order
 
 if __name__ == "__main__":
-    import time
-    start_time = time.time()  
+    
     parser = argparse.ArgumentParser(description="Orders distribution")
     parser.add_argument('input_file', type=str, help='Input file', default=None)
     parser.add_argument('output_file', type=str, help='Output file [optional]', default=None, nargs='?')
@@ -67,7 +66,7 @@ if __name__ == "__main__":
     if args.output_file:
         output_file = args.output_file
     else:
-        output_file = f'randomized_output_{input_file}'
+        output_file = f'simmulated_annealing_output_{input_file}'
     
     archive_name = f"../data/{input_file}"
     excel_modelo = pd.ExcelFile(archive_name)
@@ -115,24 +114,61 @@ if __name__ == "__main__":
     orders = list(order_sku_time.keys())
     time_positions = list(s.keys())
     
-    print(time.time() - start_time)
+    dict_zones={}
+    dict_positions_order={}
+
+    # Setting the simulated annealing parameters
+    # Initial solution
+    # Randomly shuffle the orders to create an initial solution
+    random.shuffle(orders)
+    # Calculate the time for each zone and the order positions
+    dict_zones, dict_positions_order = calculate_zones_time(orders, time_positions, order_sku_time, s)
+    # Calculate the maximum time for the initial solution
+    best_max_time= max(dict_zones.values())
+    # Initialize the best solution with the initial solution
+    better_max_time=best_max_time
+    better_solution = dict_positions_order
+    better_zones = dict_zones
+
+    # Initialize the best solution with the initial solution
+    best_solution = dict_positions_order
+    best_zones = dict_zones
+
+    # Simulated Annealing parameters
+    T=1000  # Initial temperature
+    alpha=0.95  # Cooling rate
+    max_iterations=1000  # Number of iterations at each temperature
+
+
+
+    while T > 1 and max_iterations>0:
+        # Generate a new solution by swapping two random orders
+        new_orders= orders.copy()
+        idx1, idx2 = random.sample(range(len(new_orders)), 2)
+        new_orders[idx1], new_orders[idx2] = new_orders[idx2], new_orders[idx1]
+        # Calculate the time for each zone and the order positions
+        new_dict_zones, new_dict_positions_order = calculate_zones_time(new_orders, time_positions, order_sku_time, s)
+        # Calculate the maximum time for the new solution
+        new_max_time= max(new_dict_zones.values())
+        # Calculate the difference in time between the new solution and the current solution
+        delta = new_max_time - better_max_time
+        # If the new solution is better, accept it
+        if delta <0 or random.uniform(0, 1) < math.exp(-delta / T):
+            orders = new_orders.copy()
+            better_max_time = new_max_time
+            better_solution = new_dict_positions_order
+            better_zones = new_dict_zones
+            if better_max_time < best_max_time:
+                best_max_time = better_max_time
+                best_solution = better_solution
+                best_zones = better_zones
+        else:
+            random.shuffle(orders)
+        # Cool down the temperature
+        T *= alpha
+        max_iterations-=1
     
-    best_solution = None
-    best_zones = None
-    best_max_time = float('inf')
     
-    # Randomize 10 times and select the best solution
-    for _ in range(10):
-        random.shuffle(orders)
-        dict_zones, dict_positions_order = calculate_zones_time(orders, time_positions, order_sku_time, s)
-        max_time = max(dict_zones.values())
-        
-        if max_time < best_max_time:
-            best_max_time = max_time
-            best_solution = dict_positions_order
-            best_zones = dict_zones
-    
-    # Assign the best solution to workers
     order_dict_zones = dict(sorted(best_zones.items(), key=lambda item: item[1], reverse=True))
     sorted_dict_zones = list(order_dict_zones.keys())
     for index, row in productividad.iterrows():
@@ -141,5 +177,4 @@ if __name__ == "__main__":
     
     # Write the results within an excel file
     write_excel(best_solution, best_zones, output_file, input_file)
-    print(f'Success Randomized, {input_file}, {best_max_time}')
-    
+    print(f'Success Simulated Annealing, {input_file}, {best_max_time}')
