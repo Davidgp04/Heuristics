@@ -1,0 +1,28 @@
+(venv) PS C:\Users\PC\iCloudDrive\Semester 7\Heuristics\Project\src> py testing.py
+
+Processing Data_40_Salidas_composición_zonas_heterogéneas.xlsx...
+Success Simulated Annealing, Data_40_Salidas_composición_zonas_heterogéneas.xlsx, 541.5133333333334
+Success Constructive, Data_40_Salidas_composición_zonas_heterogéneas.xlsx, 578.3466666666668
+
+Processing Data_40_Salidas_composición_zonas_homogéneas.xlsx...
+Success Simulated Annealing, Data_40_Salidas_composición_zonas_homogéneas.xlsx, 454.4333333333335
+Success Constructive, Data_40_Salidas_composición_zonas_homogéneas.xlsx, 468.01666666666677
+
+Processing Data_60_Salidas_composición_zonas_heterogéneas.xlsx...
+Success Simulated Annealing, Data_60_Salidas_composición_zonas_heterogéneas.xlsx, 540.5366666666667
+Success Constructive, Data_60_Salidas_composición_zonas_heterogéneas.xlsx, 571.4533333333335
+
+Processing Data_60_Salidas_composición_zonas_homogéneas.xlsx...
+Success Simulated Annealing, Data_60_Salidas_composición_zonas_homogéneas.xlsx, 484.68333333333334
+Success Constructive, Data_60_Salidas_composición_zonas_homogéneas.xlsx, 504.1
+
+Processing Data_80_Salidas_composición_zonas_heterogéneas.xlsx...
+Success Simulated Annealing, Data_80_Salidas_composición_zonas_heterogéneas.xlsx, 584.8466666666667
+Success Constructive, Data_80_Salidas_composición_zonas_heterogéneas.xlsx, 608.5966666666669
+
+Processing Data_80_Salidas_composición_zonas_homogéneas.xlsx...
+Success Simulated Annealing, Data_80_Salidas_composición_zonas_homogéneas.xlsx, 475.76666666666677
+Success Constructive, Data_80_Salidas_composición_zonas_homogéneas.xlsx, 496.76666666666654
+
+All test files processed!
+(venv) PS C:\Users\PC\iCloudDrive\Semester 7\Heuristics\Project\src> 
