@@ -34,6 +34,14 @@ Para ejecutar la variante aleatorizada, usa:
 ```sh
 py randomized.py pedidos.xlsx resultado.xlsx [opcional]
 ```
+### Recocido Simulado
+```sh
+py simulated_annealing.py pedidos.xlsx resultado.xlsx [opcional]
+```
+### Correr todos los algoritmos en todos los casos de prueba
+```sh
+py testing.py
+```
 
 ### Parámetros:
 - `pedidos.xlsx` → Archivo Excel de entrada con los datos de los pedidos (ubicado en la carpeta data).
